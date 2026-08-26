@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  tileserver:
+    image: maptiler/tileserver-gl
+    container_name: tileserver
+    restart: unless-stopped
+    volumes:
+      - /data/external:/data
+    command: ["-c", "/data/osm_data/config.json"]
+
+  mapproxy:
+    image: kartoza/mapproxy:latest
+    container_name: mapproxy
+    restart: unless-stopped
+    user: "0:0"
+    # Overriding entrypoint to skip Kartoza initialization scripts
+    entrypoint:
+      [
+        "mapproxy-util",
+        "serve-develop",
+        "-b",
+        "0.0.0.0:8080",
+        "/mapproxy/mapproxy.yaml",
+      ]
+    volumes:
+      - /opt/maps/config/mapproxy.yaml:/mapproxy/mapproxy.yaml
+      - /data/external/satellite_cache:/cache_data
+    ports:
+      - "8080:8080"
+
+  map_router:
+    image: nginx:alpine
+    container_name: map_router
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - /opt/maps/config/nginx_internal.conf:/etc/nginx/conf.d/default.conf
