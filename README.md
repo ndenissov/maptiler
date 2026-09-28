@@ -1,5 +1,12 @@
 # Map Services Stack
 
+[![GitHub License](https://img.shields.io/github/license/ndenissov/maptiler?style=for-the-badge)](https://github.com/ndenissov/maptiler/blob/main/LICENSE)
+[![Docker Ready](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![Nginx Proxy](https://img.shields.io/badge/Nginx-Proxy-009639?style=for-the-badge&logo=nginx&logoColor=white)](https://nginx.org/)
+[![MapProxy](https://img.shields.io/badge/MapProxy-Enabled-538b25?style=for-the-badge)](https://mapproxy.org/)
+[![TileServer GL](https://img.shields.io/badge/TileServer_GL-Powered-0078FF?style=for-the-badge)](https://maptiler.com/)
+[![GitHub Stars](https://img.shields.io/github/stars/ndenissov/maptiler?style=for-the-badge&logo=github&color=F3DF26)](https://github.com/ndenissov/maptiler/stargazers)
+
 A containerized infrastructure for serving and caching map data (tiles). This project unifies local map hosting and
 external source proxying through a single entry point.
 
